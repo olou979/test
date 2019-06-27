@@ -6,11 +6,11 @@
             </div>
             <div class="commonheader-header-nav">
                 <div class="commonheader-header-nav-item">
-                        <router-link :to="{ path: '/index' }">首页</router-link>
+                        <router-link to="Index">首页</router-link>
                 </div>
                 <div class="commonheader-header-nav-item">
                     <span class="commonheader-header-nav-item-span">
-                        <router-link :to="{ path: '/product' }">产品中心</router-link>
+                        <router-link to="Product">产品中心</router-link>
                     </span>
                 </div>
                 <div class="commonheader-header-nav-item">
@@ -77,10 +77,12 @@ export default {
 }
 .commonheader-header-nav{
     display: flex;
+    justify-content: center;
 }
 .commonheader-header-nav-item {
     padding-right: 50px;
     line-height: 70px;
+    width: 106px;
 }
 .commonheader-header-nav-item-span a{
     font-size: 14px;
