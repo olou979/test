@@ -6,11 +6,11 @@
             </div>
             <div class="commonheader-header-nav">
                 <div class="commonheader-header-nav-item">
-                        <router-link to="Index">首页</router-link>
+                        <router-link to="/Index">首页</router-link>
                 </div>
                 <div class="commonheader-header-nav-item">
                     <span class="commonheader-header-nav-item-span">
-                        <router-link to="Product">产品中心</router-link>
+                        <router-link to="/Product">产品中心</router-link>
                     </span>
                 </div>
                 <div class="commonheader-header-nav-item">

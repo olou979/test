@@ -126,8 +126,9 @@
 </template>
 
 <script>
-import Header from '../views/Header'
-import Footer from '../views/Footer'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+// import Test from '../components/Test'
 
 export default {
     data() {
@@ -140,7 +141,7 @@ export default {
     }
   },
   components: {
-    Header,Footer,Test
+    Header,Footer
   }
 }
 </script>

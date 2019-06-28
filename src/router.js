@@ -1,19 +1,19 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Index from './views/Index.vue'
-import Product from './views/Product.vue'
+import Index from './components/Index.vue'
+import Product from './components/Product.vue'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/Index',
       name: 'Index',
       component: Index
     },
     {
-      path: '/',
+      path: '/Product',
       name: 'Product',
       component: Product
     }
