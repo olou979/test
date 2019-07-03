@@ -15,17 +15,17 @@
                 </div>
                 <div class="commonheader-header-nav-item">
                     <span class="commonheader-header-nav-item-span">
-                        <router-link :to="{ path: '/services' }">增值服务</router-link>
+                        <router-link to="/Services">增值服务</router-link>
                     </span>
                 </div>
                 <div class="commonheader-header-nav-item">
                     <span class="commonheader-header-nav-item-span">
-                        <router-link :to="{ path: '/case' }">合作案例</router-link>
+                        <router-link to="/indexs">合作案例</router-link>
                     </span>
                 </div>
                 <div class="commonheader-header-nav-item">
                     <span class="commonheader-header-nav-item-span">
-                        <router-link :to="{ path: '/recruit' }">代理招募</router-link>
+                        <router-link to="/recruit">代理招募</router-link>
                     </span>
                 </div>
                 <div class="commonheader-header-nav-item">
@@ -41,12 +41,12 @@
             </div>
             <div class="commonheader-header-contact">
                 <div class="commonheader-header-contact-buttun">
-                    <div class="commonheader-header-contact-buttun-login" @click="clicklogin">
+                    <div class="commonheader-header-contact-buttun-login">
                         <span class="commonheader-header-contact-buttun-login-span">商家登陆</span>
                     </div>
                 </div>
                 <div class="commonheader-header-contact-buttuns">
-                    <div class="commonheader-header-contact-buttun-ontrial" @click="clicklogin">
+                    <div class="commonheader-header-contact-buttun-ontrial">
                         <span class="commonheader-header-contact-buttun-ontrial-span">申请试用</span>
                     </div>
                 </div>
@@ -65,11 +65,13 @@ export default {
 .commonheader{
     width: 100%;
     height: 70px;
+    position: sticky;
+    top: 0;
+    background: #fff;
 }
 .commonheader-header{
     min-width: 100vh;
     height: 70px;
-    background: #fff;
     display: flex;
 }
 .commonheader-header-logo{
@@ -85,8 +87,10 @@ export default {
     width: 106px;
 }
 .commonheader-header-nav-item-span a{
+    font-family: SourceHanSansCN-Regular;
     font-size: 14px;
     color: #2A2A2A;
+    letter-spacing: 0;
 }
 .commonheader-header-contact{
     display: flex;
@@ -114,5 +118,11 @@ export default {
     padding: 8px 10px;
     font-size: 14px;
     color: #fff;
+}
+.router-link-exact-active{
+    color: #00AF57;
+}
+.commonheader-header-nav-item:hover a{
+    color: #00AF57;
 }
 </style>

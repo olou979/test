@@ -1,14 +1,17 @@
 <template>
   <div class="index container">
     <Header></Header>
-      <div class="banner">
-        <el-carousel :interval="1000" arrow="always" class="d_jump" height="620px">
-            <el-carousel-item v-for="item in imgList" :key="item.id">
-                <el-row>
-                    <el-col :span="24"><img ref="imgHeight" :src="item.idView" class="banner_img"/></el-col>
-                </el-row>
-             </el-carousel-item>
-        </el-carousel>
+      <div class="slide">
+        <div class="slideshow">
+          <ul>
+            <li v-for="(img, index) in imgArray" v-show="index===mark" :key="index" class="slideshow-li">
+              <img :src='img' style="width:100%;height:625px;" class="slideshow-img">
+            </li>
+          </ul>
+        </div>
+        <div class="bar">
+          <span v-for="(item, index) in imgArray" :class="{ 'active':index===mark}" :key="index"></span>
+        </div>
       </div>
         <div class="notice">
           <div class="notice-nav">
@@ -120,7 +123,33 @@
               <div class="content-nav-item-title">增值服务</div>
             </div>
           </div>
+          <div class="content-txw">
+            <div class="content-txw-wb">
+              <div class="content-txw-wb-title">为17年老店<br>提高综合经营效率</div>
+              <div class="content-txw-wb-text">同兴旺使用微餐系统后，大大优化了门店的运作流程，摆脱了人工手<br>写下单，从点餐到上菜每桌平均节省了10分钟，客单价日均高达<br>600+,餐厅整体利润提高了18%，效果十分喜人。</div>
+            </div>
+            <div class="content-txw-wb-down">
+              <div class="content-txw-wb-down-icon">
+                <img src="../img/同兴旺圆形小logo.png">
+              </div>
+              <div class="content-txw-wb-down-wb">
+                <div class="content-txw-wb-down-wb-title">同兴旺餐厅</div>
+                <div class="content-txw-wb-down-wb-text">楼面经理</div>
+              </div>
+            </div>
+            <div class="content-txw-button">
+             <div class="content-txw-button-more">
+               <div class="content-twx-button-more-text">
+                <router-link to="/index">查看更多</router-link>
+               </div>
+               <div class="content-twx-button-more-icon">
+                <img src="../img/右箭头.png">
+               </div>
+             </div>
+            </div>
+          </div>
         </div>
+        <Totop></Totop>
         <Footer></Footer>
   </div>
 </template>
@@ -128,20 +157,45 @@
 <script>
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-// import Test from '../components/Test'
+import Totop from '../components/Totop'
+import Nav from '../components/Nav'
+import { setInterval } from 'timers';
 
 export default {
     data() {
       return{
-      imgList: [
-        {id: 0, idView: require('../img/banner1.png')},
-        {id: 1, idView: require('../img/banner02.png')},
-        {id: 2, idView: require('../img/banner03.jpg')}
-      ]
+        mark: 0,
+        imgArray: [
+          require('../img/banner1.png'),
+          require('../img/banner02.png'),
+          require('../img/banner03.jpg')
+        ]
+        // imgList: [
+        //   {id: 0, idView: require('../img/banner1.png')},
+        //   {id: 1, idView: require('../img/banner02.png')},
+        //   {id: 2, idView: require('../img/banner03.jpg')}
+        // ]
     }
   },
+  methods: {
+    autoPlay () {
+      this.mark++;
+      if(this.mark===3) {
+        this.mark = 0
+      }
+    },
+    play () {
+      setInterval(this.autoPlay,2500)
+    },
+    change (i) {
+      this.mark = i
+    }
+  },
+  created () {
+    this.play()
+  },
   components: {
-    Header,Footer
+    Header, Footer, Totop, Nav
   }
 }
 </script>
@@ -225,6 +279,8 @@ export default {
   width: 280px;
 }
 .content-nav{
+  width: 100%;
+  height: 800px;
   display: flex;
   justify-content: center;
   padding-top: 161px;
@@ -239,4 +295,110 @@ export default {
 .content-nav-item{
   text-align: center;
 }
+.content-txw{
+  width: 100%;
+  height: 699px;
+}
+.content-txw-wb-title{
+  font-family: SourceHanSansCN-Medium;
+  font-size: 42px;
+  color: #414141;
+  letter-spacing: 0;
+  line-height: 54px;
+  padding-top: 114px;
+  padding-left: 394px;
+}
+.content-txw-wb-text{
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #666666;
+  letter-spacing: 0;
+  line-height: 30px;
+  padding-top: 63px;
+  padding-left: 394px;
+}
+.content-txw-wb-down{
+  display: flex;
+  padding-top: 70px;
+  padding-left: 394px;
+}
+.content-txw-wb-down-wb{
+  padding-left: 19px;
+}
+.content-txw-wb-down-wb-title{
+  font-family: PingFangSC-Medium;
+  font-size: 16px;
+  color: #313131;
+  letter-spacing: 0;
+  line-height: 26px;
+}
+.content-txw-wb-down-wb-text{
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #8E8E8E;
+  letter-spacing: 0;
+  line-height: 26px;
+}
+.content-txw-button{
+  width: 162px;
+  height: 56px;
+}
+.content-txw-button{
+  padding-left: 394px;
+  padding-top: 38px;
+}
+.content-txw-button-more{
+  width: 162px;
+  height: 56px;
+  background: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  border-radius: 3px;
+  display: flex;
+}
+.content-twx-button-more-text{
+  padding-top: 13px;
+  padding-left: 30px;
+}
+.content-twx-button-more-icon{
+  padding-top: 15px;
+  padding-left: 40px;
+}
+.slide {
+    width: 100%;
+    height: 625px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+  }
+  .slideshow {
+    width: 100%;
+    height: 625px;
+  }
+  .slideshow-li{
+    position: absolute;
+  }
+  .slideshow-img {
+    width: 100%;
+    height: 625px;
+  }
+  .bar {
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+    margin: 0 auto;
+    z-index: 10;
+    text-align: center;
+  }
+  .bar span {
+    width: 46px;
+    height: 2px;
+    border: 1px solid;
+    opacity: 0.15;
+    background: #000000;
+    display: inline-block;
+    margin-right: 10px;
+  }
+  .active {
+    background: #00AF57 !important;
+  }
 </style>
